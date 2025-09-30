@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Radit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cyber-bg"></div>
+
+  <header class="navbar">
+    <h1 class="logo">⚡ Gallery</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="bio.html">Biografi</a>
+      <a href="gallery.html" class="active">Gallery</a>
+    </nav>
+  </header>
+
+  <main class="content fade-in">
+    <h2>Upload Foto</h2>
+    <form id="uploadForm">
+      <input type="file" id="fileInput" accept="image/*">
+      <input type="text" id="urlInput" placeholder="Paste URL gambar di sini">
+      <button type="submit" class="btn-glow">Upload</button>
+    </form>
+
+    <div class="gallery-grid" id="gallery"></div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
