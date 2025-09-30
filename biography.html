@@ -3,32 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery Radit</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Radit.com Biography</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* copy semua CSS dari file dashboard lu */
+    /* tambahin typing effect */
+    .typing {
+      border-right: 2px solid var(--neon-cyan);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end), blinkCursor 0.8s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blinkCursor {
+      50% { border-color: transparent }
+    }
+  </style>
 </head>
 <body>
-  <div class="cyber-bg"></div>
+  <div class="grid-lines"></div>
+  <div class="glowing-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-  <header class="navbar">
-    <h1 class="logo">⚡ Gallery</h1>
-    <nav>
-      <a href="index.html">Dashboard</a>
-      <a href="bio.html">Biografi</a>
-      <a href="gallery.html" class="active">Gallery</a>
-    </nav>
-  </header>
+  <div class="container">
+    <header>
+      <h1 class="cyberpunk-logo">Biography</h1>
+      <p class="subtitle typing">Get to know Radit better 🚀</p>
+      <button onclick="location.href='index.html'" class="upload-btn" style="margin-top:15px;">
+        Back to Dashboard
+      </button>
+    </header>
 
-  <main class="content fade-in">
-    <h2>Upload Foto</h2>
-    <form id="uploadForm">
-      <input type="file" id="fileInput" accept="image/*">
-      <input type="text" id="urlInput" placeholder="Paste URL gambar di sini">
-      <button type="submit" class="btn-glow">Upload</button>
-    </form>
+    <div class="dashboard">
+      <!-- Left Panel -->
+      <div class="panel">
+        <h2 class="panel-title"><i class="fas fa-user"></i> Personal Info</h2>
+        <ul class="activity-list">
+          <li class="activity-item"><i class="fas fa-id-card activity-icon"></i><div class="activity-content">Name: Radit</div></li>
+          <li class="activity-item"><i class="fas fa-birthday-cake activity-icon"></i><div class="activity-content">Age: 17</div></li>
+          <li class="activity-item"><i class="fas fa-map-marker-alt activity-icon"></i><div class="activity-content">Location: Indonesia</div></li>
+        </ul>
+      </div>
 
-    <div class="gallery-grid" id="gallery"></div>
-  </main>
+      <!-- Middle Panel -->
+      <div class="panel">
+        <h2 class="panel-title"><i class="fas fa-star"></i> About Me</h2>
+        <p style="line-height:1.6;">
+          I am Radit, a student passionate about technology, networks, and coding.
+          My dream is to build futuristic systems and share my projects with the world 🌐.
+        </p>
+      </div>
 
-  <script src="js/script.js"></script>
+      <!-- Right Panel -->
+      <div class="panel">
+        <h2 class="panel-title"><i class="fas fa-heart"></i> Hobbies & Interests</h2>
+        <ul class="activity-list">
+          <li class="activity-item"><i class="fas fa-gamepad activity-icon"></i><div class="activity-content">Gaming & Esports</div></li>
+          <li class="activity-item"><i class="fas fa-code activity-icon"></i><div class="activity-content">Programming & Cybersecurity</div></li>
+          <li class="activity-item"><i class="fas fa-film activity-icon"></i><div class="activity-content">Movies & Editing</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
