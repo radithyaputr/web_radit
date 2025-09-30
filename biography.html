@@ -3,23 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radit.com Biography</title>
+  <title>Radit Biography</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    /* copy semua CSS dari file dashboard lu */
-    /* tambahin typing effect */
-    .typing {
-      border-right: 2px solid var(--neon-cyan);
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 4s steps(40, end), blinkCursor 0.8s step-end infinite;
+    :root {
+      --neon-cyan: #00f3ff;
+      --neon-pink: #ff00ff;
+      --neon-purple: #bd00ff;
+      --dark-bg: #0a0a14;
+      --text-color: #ffffff;
     }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Share Tech Mono', monospace;
     }
-    @keyframes blinkCursor {
-      50% { border-color: transparent }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-color);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Grid lines background */
+    .grid-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -2;
+      background-image: 
+        linear-gradient(to right, rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: grid-move 20s infinite linear;
+    }
+
+    @keyframes grid-move {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+
+    /* Glowing moving orbs */
+    .glowing-orbs {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.5;
+    }
+    .orb-1 {
+      width: 300px; height: 300px;
+      background: var(--neon-cyan);
+      top: -100px; left: -100px;
+      animation: float 12s infinite alternate;
+    }
+    .orb-2 {
+      width: 200px; height: 200px;
+      background: var(--neon-pink);
+      bottom: -80px; right: -80px;
+      animation: float 10s infinite alternate-reverse;
+    }
+    .orb-3 {
+      width: 150px; height: 150px;
+      background: var(--neon-purple);
+      top: 40%; right: 15%;
+      animation: float 8s infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0,0); }
+      50% { transform: translate(20px,20px); }
+      100% { transform: translate(0,0); }
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .cyberpunk-logo {
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: transparent;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: pulse 2s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px var(--neon-cyan); }
+      100% { text-shadow: 0 0 25px var(--neon-purple); }
+    }
+
+    /* Biography content */
+    .bio-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(16, 16, 32, 0.8);
+      border-radius: 15px;
+      padding: 30px;
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+      animation: fadeInUp 1.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bio-title {
+      font-size: 1.8rem;
+      color: var(--neon-cyan);
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .bio-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+      text-align: justify;
+    }
+
+    /* Button back */
+    .back-btn {
+      display: block;
+      margin: 30px auto 0;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+    }
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(0,243,255,0.5);
     }
   </style>
 </head>
@@ -31,45 +172,21 @@
     <div class="orb orb-3"></div>
   </div>
 
-  <div class="container">
-    <header>
-      <h1 class="cyberpunk-logo">Biography</h1>
-      <p class="subtitle typing">Get to know Radit better 🚀</p>
-      <button onclick="location.href='index.html'" class="upload-btn" style="margin-top:15px;">
-        Back to Dashboard
-      </button>
-    </header>
+  <header>
+    <h1 class="cyberpunk-logo">Radit Biography</h1>
+  </header>
 
-    <div class="dashboard">
-      <!-- Left Panel -->
-      <div class="panel">
-        <h2 class="panel-title"><i class="fas fa-user"></i> Personal Info</h2>
-        <ul class="activity-list">
-          <li class="activity-item"><i class="fas fa-id-card activity-icon"></i><div class="activity-content">Name: Radit</div></li>
-          <li class="activity-item"><i class="fas fa-birthday-cake activity-icon"></i><div class="activity-content">Age: 17</div></li>
-          <li class="activity-item"><i class="fas fa-map-marker-alt activity-icon"></i><div class="activity-content">Location: Indonesia</div></li>
-        </ul>
-      </div>
+  <div class="bio-container">
+    <h2 class="bio-title"><i class="fas fa-user"></i> About Radit</h2>
+    <p class="bio-text">
+      Hi, I am Radit. A passionate learner in technology, networking, and cybersecurity. 
+      I am currently studying TJKT (Teknik Jaringan Komputer dan Telekomunikasi) and building projects like this cyberpunk-inspired server dashboard. 
+      My goal is to become a noticeable global tech enthusiast, blending creativity and futuristic design with real technical skills. 🚀
+    </p>
 
-      <!-- Middle Panel -->
-      <div class="panel">
-        <h2 class="panel-title"><i class="fas fa-star"></i> About Me</h2>
-        <p style="line-height:1.6;">
-          I am Radit, a student passionate about technology, networks, and coding.
-          My dream is to build futuristic systems and share my projects with the world 🌐.
-        </p>
-      </div>
-
-      <!-- Right Panel -->
-      <div class="panel">
-        <h2 class="panel-title"><i class="fas fa-heart"></i> Hobbies & Interests</h2>
-        <ul class="activity-list">
-          <li class="activity-item"><i class="fas fa-gamepad activity-icon"></i><div class="activity-content">Gaming & Esports</div></li>
-          <li class="activity-item"><i class="fas fa-code activity-icon"></i><div class="activity-content">Programming & Cybersecurity</div></li>
-          <li class="activity-item"><i class="fas fa-film activity-icon"></i><div class="activity-content">Movies & Editing</div></li>
-        </ul>
-      </div>
-    </div>
+    <button class="back-btn" onclick="location.href='index.html'">
+      ← Back to Dashboard
+    </button>
   </div>
 </body>
 </html>
